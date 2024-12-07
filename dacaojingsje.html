@@ -67,6 +67,7 @@
 
     <!-- 背景音乐控制按钮 -->
     <button class="music-control" id="music-control-button" onclick="toggleMusic()">暂停背景音乐</button>
+    
 
     <div class="container">
         <!-- 网页标题 -->
@@ -90,6 +91,29 @@
         <!-- 播放解说按钮 -->
         <h2>这则成语意思是...</h2>
         <button class="btn-play" onclick="playExplanation()">播放解说</button>
+
+        <script>
+        // 背景音乐自动播放控制
+        const music = document.getElementById("background-music");
+        const musicControlButton = document.getElementById("music-control-button");
+
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                musicControlButton.textContent = "暂停背景音乐";
+            } else {
+                music.pause();
+                musicControlButton.textContent = "播放背景音乐";
+            }
+        }
+
+        // 自动播放背景音乐（需要用户交互触发）
+        document.addEventListener("DOMContentLoaded", () => {
+            // 尝试在加载时播放音乐
+            music.play().catch(() => {
+                console.log("自动播放受限，等待用户交互。");
+            });
+        });
 
         <h2>成语故事</h2>
        <h3>南唐时候，当涂县（今属安徽省马鞍山市）的县令叫王鲁。这个县令贪得无厌，财迷心窍，见钱眼开，只要是有钱、有利可图，他就可以不顾是非曲直，颠倒黑白。在他做当涂县令的任上，干了许多贪赃枉法的坏事。常言说，上梁不正下梁歪。这王鲁属下的那些大小官吏，见上司贪赃枉法，便也一个个明目张胆干坏事，他们变着法子敲诈勒索、贪污受贿，巧立名目搜刮民财，这样的大小贪官竟占了当涂县官吏的十之八九。因此，当涂县的老百姓真是苦不堪言，一个个从心里恨透了这批狗官，总希望能有个机会好好惩治他们，出出心中怨气。
